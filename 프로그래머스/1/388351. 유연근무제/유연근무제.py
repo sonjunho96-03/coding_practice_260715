@@ -18,7 +18,10 @@ def solution(schedules, timelogs, startday):
         is_late = False  # 지각 여부 정보 변수
 
         for day_index in range(7):
-            day = (startday + day_index - 1) % 7 + 1
+            day = startday + day_index
+
+            if day > 7:
+                day -=7
 
             if day != 6 and day != 7:
                 if timelogs[i][day_index] > deadline:
