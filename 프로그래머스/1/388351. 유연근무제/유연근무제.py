@@ -15,17 +15,17 @@ def solution(schedules, timelogs, startday):
 
         deadline = hour * 100 + minute
 
-        success = True
+        is_late = False  # 지각 여부 정보 변수
 
-        for j in range(7):
-            day = (startday + j - 1) % 7 + 1
+        for day_index in range(7):
+            day = (startday + day_index - 1) % 7 + 1
 
             if day != 6 and day != 7:
-                if timelogs[i][j] > deadline:
-                    success = False
+                if timelogs[i][day_index] > deadline:
+                    is_late = True
                     break
 
-        if success:
+        if is_late == False:
             answer += 1
 
     return answer
